@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İspanyolca Online Lego + V2.0 | Eğitim Seti</title>
+    <meta name="description" content="A1'den B2'ye 12 fasikül, seslendirmeli hikayeler, gramer formülleri ve testlerle kapsamlı online İspanyolca kursu. Bloklar halinde öğren, sıfırdan akıcılığa ulaş.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="İspanyolca Online Lego + V2.0 | Eğitim Seti">
+    <meta property="og:description" content="A1'den B2'ye 12 fasikül, seslendirmeli hikayeler, gramer formülleri ve testlerle kapsamlı online İspanyolca kursu. Bloklar halinde öğren, sıfırdan akıcılığa ulaş.">
+    <meta property="og:image" content="https://ispanyolcaonline.github.io/legoplus/ispanyolca-online/images/kapak-gorseli.jpg">
+    <meta property="og:url" content="https://ispanyolcaonline.github.io/legoplus/ispanyolca-online/lego-v2.html">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Fraunces', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B0C10',
+                            card: '#131620',
+                            border: '#1F2937',
+                            gold: '#C79A3D',
+                            ruby: '#5C1420',
+                            cream: '#F5F5F0',
+                        }
+                    },
+                    boxShadow: {
+                        'glow-gold': '0 0 25px -5px rgba(199, 154, 61, 0.25)',
+                        'glow-ruby': '0 0 25px -5px rgba(92, 20, 32, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B0C10;
+            color: #F5F5F0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+
+        .ambient-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+        .blob-1 {
+            position: absolute; top: -14%; left: 50%; transform: translateX(-50%);
+            width: 560px; height: 560px;
+            background: radial-gradient(circle, rgba(199,154,61,0.14) 0%, rgba(92,20,32,0.06) 50%, transparent 70%);
+            filter: blur(95px);
+            animation: pulse-slow 8s infinite alternate;
+        }
+        .blob-2 {
+            position: absolute; bottom: 5%; right: -14%;
+            width: 440px; height: 440px;
+            background: radial-gradient(circle, rgba(92,20,32,0.16) 0%, rgba(199,154,61,0.05) 50%, transparent 70%);
+            filter: blur(100px);
+            animation: float 10s infinite alternate;
+        }
+        @keyframes pulse-slow { 0% { transform: translateX(-50%) scale(1); opacity: 0.8; } 100% { transform: translateX(-50%) scale(1.18); opacity: 1; } }
+        @keyframes float { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(-28px) rotate(8deg); } }
+        .vignette-overlay { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, rgba(11,12,16,0) 35%, rgba(11,12,16,0.9) 100%); }
+
+        .glass-card {
+            background: rgba(19, 22, 32, 0.75);
+            backdrop-filter: blur(22px) saturate(130%);
+            -webkit-backdrop-filter: blur(22px) saturate(130%);
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 8px 20px -8px rgba(0,0,0,0.7);
+            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+        .glass-card:hover {
+            border-color: rgba(199,154,61,0.35);
+        }
+
+        .glass-card-ruby {
+            background: linear-gradient(145deg, rgba(19, 22, 32, 0.9), rgba(40, 15, 18, 0.75));
+            backdrop-filter: blur(22px) saturate(130%);
+            -webkit-backdrop-filter: blur(22px) saturate(130%);
+            border: 1px solid rgba(31,41,55,0.8);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 20px -8px rgba(0,0,0,0.7), 0 0 30px -10px rgba(199,154,61,0.1);
+        }
+
+        .stud-mark { display: inline-flex; gap: 3px; }
+        .stud-mark span { width: 6px; height: 6px; border-radius: 2px; background: currentColor; }
+
+        .star-row i { color: #C79A3D; }
+
+        /* Foil gold gradient text effect */
+        .foil-gold {
+            background: linear-gradient(100deg, #8A6423 0%, #C79A3D 20%, #F5D889 40%, #C79A3D 60%, #8A6423 80%, #C79A3D 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: foilShine 5s linear infinite;
+        }
+        @keyframes foilShine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .gold-divider {
+            height: 1px;
+            width: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(199,154,61,0.5) 50%, transparent 100%);
+            margin: 2rem 0;
+        }
+
+        /* Seviye accordion */
+        .seviye-toggle .chev { transition: transform 0.3s ease; }
+        .seviye-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
+        /* Reçete callout */
+        .recete-box {
+            background: linear-gradient(135deg, rgba(199,154,61,0.12), rgba(92,20,32,0.15));
+            border: 1px solid rgba(199,154,61,0.35);
+        }
+
+        /* Device mockup (telefon/tablet çerçevesi) */
+        .device-frame {
+            position: relative;
+            border-radius: 1.75rem;
+            padding: 10px;
+            background: linear-gradient(160deg, #1c1f2b, #0d0e13);
+            border: 1px solid rgba(199,154,61,0.25);
+            box-shadow: 0 20px 50px -20px rgba(0,0,0,0.85), 0 0 40px -15px rgba(199,154,61,0.18);
+        }
+        .device-frame .screen {
+            position: relative;
+            border-radius: 1.15rem;
+            overflow: hidden;
+            background: #05060a;
+            aspect-ratio: 3 / 4;
+        }
+        .device-frame .notch {
+            display: none;
+        }
+        .device-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .device-frame.device-frame-sm { padding: 7px; border-radius: 1.35rem; }
+        .device-frame.device-frame-sm .screen { border-radius: 0.9rem; }
+        .device-frame.device-frame-sm .notch { width: 30%; height: 10px; }
+
+        .gallery-scroll {
+            display: flex;
+            gap: 0.9rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 0.25rem 0.25rem 0.75rem;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .gallery-scroll::-webkit-scrollbar { display: none; }
+        .gallery-scroll > div { scroll-snap-align: start; flex: 0 0 58%; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+<div class="ambient-bg">
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+    <div class="vignette-overlay"></div>
+</div>
+
+<main class="max-w-md mx-auto px-5 pt-8 pb-16">
+
+    <a href="index.html" class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-brand-gold transition-colors mb-6">
+        <i class="fa-solid fa-arrow-left text-[10px]"></i> İspanyolca Online'a dön
+    </a>
+
+    <!-- HERO -->
+    <header class="text-center mb-8">
+        <div class="flex items-center justify-center gap-2 mb-4">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-card border border-brand-gold/30 text-brand-cream text-[11px] font-bold tracking-wide">
+                <span class="stud-mark text-brand-gold"><span></span><span></span></span>
+                EĞİTİM SETİ · V2.0
+            </div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-card border border-brand-gold/30 text-brand-cream text-[11px] font-bold tracking-wide">
+                <i class="fa-solid fa-download text-brand-gold text-[10px]"></i>
+                DİJİTAL ÜRÜN
+            </div>
+        </div>
+        <h1 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight mb-3 leading-tight">
+            İspanyolca Online<br><span class="foil-gold">Lego + V2.0</span>
+        </h1>
+        <p class="text-sm text-slate-400 leading-relaxed max-w-sm mx-auto">
+            Dili tek tek "blok" gibi birleştirerek konuşmaya başladığın, sıfırdan akıcılığa uzanan kapsamlı eğitim seti.
+        </p>
+        <p class="text-sm text-brand-cream font-semibold leading-relaxed max-w-sm mx-auto mt-2">
+            LEGO + Set V2.0 ile İspanyolca artık bebek oyuncağı...
+        </p>
+    </header>
+
+    <!-- ANA ÜRÜN GÖRSELİ -->
+    <div class="device-frame max-w-[220px] mx-auto mb-8">
+        <div class="notch"></div>
+        <div class="screen">
+            <img src="images/kapak-gorseli.jpg" alt="İspanyolca Online Lego + V2.0 eğitim seti kapak görseli">
+        </div>
+    </div>
+
+    <!-- QUICK VALUE STRIP -->
+    <div class="grid grid-cols-4 gap-2 mb-8">
+        <div class="glass-card rounded-xl py-3 text-center">
+            <div class="text-lg font-extrabold foil-gold">A1 - B2</div>
+            <div class="text-[9px] text-slate-500 uppercase tracking-wide mt-0.5">Seviye</div>
+        </div>
+        <div class="glass-card rounded-xl py-3 text-center">
+            <div class="text-lg font-extrabold foil-gold">12</div>
+            <div class="text-[9px] text-slate-500 uppercase tracking-wide mt-0.5">Fasikül</div>
+        </div>
+        <div class="glass-card rounded-xl py-3 text-center">
+            <div class="text-lg font-extrabold foil-gold">25+</div>
+            <div class="text-[9px] text-slate-500 uppercase tracking-wide mt-0.5">Test</div>
+        </div>
+        <div class="glass-card rounded-xl py-3 text-center">
+            <div class="text-lg font-extrabold foil-gold">25+</div>
+            <div class="text-[9px] text-slate-500 uppercase tracking-wide mt-0.5">Hikaye</div>
+        </div>
+        <div class="glass-card rounded-xl py-3 text-center">
+            <div class="text-lg font-extrabold foil-gold">5</div>
+            <div class="text-[9px] text-slate-500 uppercase tracking-wide mt-0.5">Deneme Yazısı</div>
+        </div>
+        <div class="glass-card rounded-xl py-3 text-center">
+            <div class="text-lg font-extrabold foil-gold">2</div>
+            <div class="text-[9px] text-slate-500 uppercase tracking-wide mt-0.5">Makale</div>
+        </div>
+        <div class="glass-card rounded-xl py-3 text-center">
+            <div class="text-lg font-extrabold foil-gold">25+</div>
+            <div class="text-[9px] text-slate-500 uppercase tracking-wide mt-0.5">Ses Kaydı</div>
+        </div>
+        <div class="glass-card rounded-xl py-3 text-center">
+            <div class="text-lg font-extrabold foil-gold">5</div>
+            <div class="text-[9px] text-slate-500 uppercase tracking-wide mt-0.5">Podcast Videosu</div>
+        </div>
+    </div>
+
+    <div class="gold-divider"></div>
+
+    <!-- SETİN İÇİNDEKİLER -->
+    <section class="mb-9">
+        <div class="flex items-center gap-2 mb-1.5 px-1">
+            <span class="stud-mark text-brand-gold"><span></span><span></span><span></span><span></span></span>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400">12 Fasikülün İçinde Neler Var?</h2>
+        </div>
+        <p class="text-xs text-slate-500 px-1 mb-4 leading-relaxed">Seviyeni seç, set içeriğini incele. Sıfırdan başlıyorsan A Seviye'den ilerle.</p>
+
+        <div class="space-y-3">
+
+            <!-- A SEVİYE -->
+            <div class="glass-card rounded-2xl overflow-hidden">
+                <button class="seviye-toggle w-full flex items-center justify-between gap-3 p-4" aria-expanded="true" onclick="toggleSeviye(this, 'panel-a')">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 shrink-0 rounded-lg bg-brand-gold/15 border border-brand-gold/40 flex items-center justify-center text-brand-gold font-bold text-xs">A</div>
+                        <div class="text-left">
+                            <div class="text-sm font-bold text-white">A Seviye</div>
+                            <div class="text-[11px] text-slate-500">Sıfırdan başlangıç · 10 Fasikül</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down chev text-xs text-brand-gold"></i>
+                </button>
+                <div id="panel-a" class="px-4 pb-4 space-y-3">
+
+                    <!-- A+ Fasikül -->
+                    <div class="glass-card rounded-xl p-4">
+                        <div class="text-sm font-bold text-white mb-1">A+ Fasikül <span class="text-[10px] font-semibold text-slate-500">(A1 & A2 seviye birleşik fasikül)</span></div>
+
+                        <div class="recete-box rounded-lg p-3 my-2.5">
+                            <div class="flex items-center gap-1.5 mb-1">
+                                <i class="fa-solid fa-star text-brand-gold text-[11px]"></i>
+                                <span class="text-xs font-extrabold foil-gold">İspanyolcanın Reçetesi</span>
+                            </div>
+                            <p class="text-[11px] text-slate-300 leading-relaxed">Hiç İspanyolca bilmeyen birini 14 adımda sıfırdan alıp temel konuşma ve çeviri becerisi kazandıran, bu fasiküle özel anlatım.</p>
+                        </div>
+
+                        <ul class="text-xs text-slate-400 leading-relaxed space-y-1 list-disc list-inside">
+                            <li>En sık kullanılan 100 kalıp</li>
+                            <li>A seviye 100 örnek cümle</li>
+                            <li>Sade, açıklayıcı A seviye gramer kuralları</li>
+                            <li>Seslendirmeli İspanyolca hikayeler</li>
+                            <li>2 seviye testi (A1 & A2)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Hikaye Blokları -->
+                    <div class="glass-card rounded-xl p-4">
+                        <div class="text-sm font-bold text-white mb-1.5">Hikaye Blokları</div>
+                        <ul class="text-xs text-slate-400 leading-relaxed space-y-1 list-disc list-inside">
+                            <li>A seviyeye özel 9 hikaye<br>— İspanyolca ve Türkçesi ayrı ayrı</li>
+                            <li>Sayfa numarasıyla takip edilebilir seslendirmeler</li>
+                        </ul>
+                    </div>
+
+                    <!-- İspanyolca Hikaye Legoları -->
+                    <div class="glass-card rounded-xl p-4">
+                        <div class="text-sm font-bold text-white mb-1.5">Hikaye Legoları</div>
+                        <ul class="text-xs text-slate-400 leading-relaxed space-y-1 list-disc list-inside">
+                            <li>Hikaye Blokları'ndaki 9 hikayeye özel hazırlanmış 9 test</li>
+                        </ul>
+                    </div>
+
+                    <!-- Dil Blokları -->
+                    <div class="glass-card rounded-xl p-4">
+                        <div class="text-sm font-bold text-white mb-1.5">Dil Blokları</div>
+                        <ul class="text-xs text-slate-400 leading-relaxed space-y-1 list-disc list-inside">
+                            <li>Hikaye Bloklarındaki anahtar kelime listesi</li>
+                            <li><i class="fa-solid fa-star text-brand-gold text-[9px] mr-1"></i>Hikaye Bloklarındaki anahtar kelimelere özel<br>hazırlanmış 9 mini ek hikaye + ses dosyaları</li>
+                            <li><span class="text-brand-cream font-semibold">"Kendi Yazdığım Hikaye"</span> bölümü — öğrendiğin kelimelerle kendi hikayeni yazmaya teşvik eder</li>
+                        </ul>
+                    </div>
+
+                    <!-- LegoCast -->
+                    <div class="glass-card rounded-xl p-4">
+                        <div class="text-sm font-bold mb-1.5"><i class="fa-solid fa-star text-brand-gold text-xs mr-1"></i><i class="fa-solid fa-podcast text-brand-gold text-xs mr-1"></i><span class="font-extrabold foil-gold">LegoCast İçerikleri</span></div>
+                        <ul class="text-xs text-slate-400 leading-relaxed space-y-1 list-disc list-inside">
+                            <li>5 özel podcast videosu<br>— İspanyolca & Türkçe altyazılı</li>
+                            <li>Her videoya özel içerik fasikülü (toplam 5)</li>
+                        </ul>
+                    </div>
+
+                    <!-- LEGO Test Fasikülü -->
+                    <div class="glass-card rounded-xl p-4">
+                        <div class="text-sm font-bold text-white mb-1.5">İspanyolca LEGO Test Fasikülü</div>
+                        <ul class="text-xs text-slate-400 leading-relaxed space-y-1 list-disc list-inside">
+                            <li>Sadece gramer konularına odaklı 10 test</li>
+                            <li>İlk 7 test kolay/orta, son 3 test ileri düzey</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- B1 SEVİYE -->
+            <div class="glass-card rounded-2xl overflow-hidden">
+                <button class="seviye-toggle w-full flex items-center justify-between gap-3 p-4" aria-expanded="false" onclick="toggleSeviye(this, 'panel-b1')">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 shrink-0 rounded-lg bg-brand-ruby/25 border border-brand-ruby/50 flex items-center justify-center text-brand-cream font-bold text-xs">B1</div>
+                        <div class="text-left">
+                            <div class="text-sm font-bold text-white">B1 Seviye</div>
+                            <div class="text-[11px] text-slate-500">B1+ Fasikülü · 1 Fasikül</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down chev text-xs text-brand-gold"></i>
+                </button>
+                <div id="panel-b1" class="px-4 pb-4 hidden">
+                    <div class="glass-card rounded-xl p-4">
+                        <ul class="text-xs text-slate-400 leading-relaxed space-y-1 list-disc list-inside">
+                            <li>B1 seviyeye özel 100 örnek cümle</li>
+                            <li>9 gramer formülü + 18 örnek cümle</li>
+                            <li>B1 seviyeye özel 3 hikaye</li>
+                            <li><i class="fa-solid fa-star text-brand-gold text-[9px] mr-1"></i>2 deneme yazısı</li>
+                            <li>2 seviye deneme testi</li>
+                            <li>Hikaye ve denemelerin seslendirmeleri</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- B2 SEVİYE -->
+            <div class="glass-card rounded-2xl overflow-hidden">
+                <button class="seviye-toggle w-full flex items-center justify-between gap-3 p-4" aria-expanded="false" onclick="toggleSeviye(this, 'panel-b2')">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 shrink-0 rounded-lg bg-brand-ruby/25 border border-brand-ruby/50 flex items-center justify-center text-brand-cream font-bold text-xs">B2</div>
+                        <div class="text-left">
+                            <div class="text-sm font-bold text-white">B2 Seviye</div>
+                            <div class="text-[11px] text-slate-500">B2+ Fasikülü · 1 Fasikül</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down chev text-xs text-brand-gold"></i>
+                </button>
+                <div id="panel-b2" class="px-4 pb-4 hidden">
+                    <div class="glass-card rounded-xl p-4">
+                        <ul class="text-xs text-slate-400 leading-relaxed space-y-1 list-disc list-inside">
+                            <li>B2 seviyeye özel 100 örnek cümle</li>
+                            <li><i class="fa-solid fa-star text-brand-gold text-[9px] mr-1"></i>A1'den B2'ye kadarki tüm gramer<br>konularına ait 100 formül<br>+ ikişer örnek (200 örnek cümle)</li>
+                            <li>3 deneme yazısı ve Türkçe çevirileri</li>
+                            <li><i class="fa-solid fa-star text-brand-gold text-[9px] mr-1"></i>2 makale yazısı ve Türkçe çevirileri</li>
+                            <li>2 seviye testi</li>
+                            <li>Deneme ve makalelerin seslendirmeleri</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BONUS -->
+        <div class="flex items-center gap-2 mb-3 mt-6 px-1">
+            <span class="stud-mark text-brand-gold"><span></span><span></span><span></span><span></span></span>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400">Bonus</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+            <div class="glass-card-ruby rounded-xl py-3 px-2 text-center">
+                <i class="fa-brands fa-telegram text-brand-gold text-base mb-1"></i>
+                <div class="text-xs font-bold text-white leading-tight">Özel Telegram Grubu</div>
+            </div>
+            <div class="glass-card-ruby rounded-xl py-3 px-2 text-center">
+                <i class="fa-brands fa-spotify text-brand-gold text-base mb-1"></i>
+                <div class="text-xs font-bold text-white leading-tight">Spotify Listesi</div>
+            </div>
+            <div class="glass-card-ruby rounded-xl py-3 px-2 text-center col-span-2 w-1/2 mx-auto">
+                <i class="fa-solid fa-layer-group text-brand-gold text-base mb-1"></i>
+                <div class="text-xs font-bold text-white leading-tight">Kelime Kartları</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- ÖRNEK GÖRSELLER GALERİSİ -->
+    <section class="mb-9">
+        <div class="flex items-center gap-2 mb-4 px-1">
+            <span class="stud-mark text-brand-gold"><span></span><span></span><span></span><span></span></span>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400">Setin İçinden Kareler</h2>
+        </div>
+        <div class="gallery-scroll">
+            <div>
+                <div class="device-frame device-frame-sm">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <img src="images/ornek-sayfa-1.jpg" alt="Örnek sayfa görseli 1">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="device-frame device-frame-sm">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <img src="images/ornek-sayfa-2.jpg" alt="Örnek sayfa görseli 2">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="device-frame device-frame-sm">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <img src="images/ornek-sayfa-3.jpg" alt="Örnek sayfa görseli 3">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="device-frame device-frame-sm">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <img src="images/ornek-sayfa-4.jpg" alt="Örnek sayfa görseli 4">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="device-frame device-frame-sm">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <img src="images/ornek-sayfa-5.jpg" alt="Örnek sayfa görseli 5">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="device-frame device-frame-sm">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <img src="images/ornek-sayfa-6.jpg" alt="Örnek sayfa görseli 6">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="device-frame device-frame-sm">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <img src="images/ornek-sayfa-7.jpg" alt="Örnek sayfa görseli 7">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="device-frame device-frame-sm">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <img src="images/ornek-sayfa-8.jpg" alt="Örnek sayfa görseli 8">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="device-frame device-frame-sm">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <img src="images/ornek-sayfa-9.jpg" alt="Örnek sayfa görseli 9">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="device-frame device-frame-sm">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <img src="images/ornek-sayfa-10.jpg" alt="Örnek sayfa görseli 10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- SOCIAL PROOF -->
+    <section class="mb-9">
+        <div class="flex items-center gap-2 mb-4 px-1">
+            <span class="stud-mark text-brand-gold"><span></span><span></span><span></span><span></span></span>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400">Seti Kullananlardan</h2>
+        </div>
+
+        <div class="space-y-3">
+            <div class="glass-card rounded-2xl p-4">
+                <div class="star-row flex gap-0.5 text-xs mb-2">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed mb-2">"Selamm, eğitim setini detaylıca inceliyorum gerçekten elinize sağlık, bu kadar detaylı bir şey beklemiyordum, özellikle ses dosyaları ve kelime kartlarına bayıldımm, süpersiniz 💁🏻‍♀️ 💕"</p>
+                <div class="text-[11px] text-slate-500 font-semibold">— H*** C***</div>
+            </div>
+            <div class="glass-card rounded-2xl p-4">
+                <div class="star-row flex gap-0.5 text-xs mb-2">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed mb-2">"Eğitim setinizi kullanıyorum, fazlasıyla yol gösterici ve kolay kavramamı ilerlememi sağlıyor. Özellikle İspanyolcanın Reçetesi çok başarılı bir kaynak. Sıfırdan başlarken kolay oturtmamı sağladı işimi kolaylaştırdınız çok teşekkür ederim"</p>
+                <div class="text-[11px] text-slate-500 font-semibold">— K*** B***</div>
+            </div>
+            <div class="glass-card rounded-2xl p-4">
+                <div class="star-row flex gap-0.5 text-xs mb-2">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed mb-2">"İspanyolcanın Reçetesinin 6. adımındayım. Hikayelerinizi okuyorum dinliyorum ve daha şimdiden kolaylaşmaya başladı. Çok faydalı"</p>
+                <div class="text-[11px] text-slate-500 font-semibold">— G*** Y***</div>
+            </div>
+            <div class="glass-card rounded-2xl p-4">
+                <div class="star-row flex gap-0.5 text-xs mb-2">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed mb-2">"Yalın ifadeyle yazılmış ve anlaşılır bir şekilde konular anlatılmış herkese tavsiye ederim. **** hocamın kitabı gramere boğulmama sebep olmuştu. Ama Lego + Sette çoğu şey günlük ve anlaşılır bir dille ifade edilmiş. Örneklere boğulmuyorsunuz veya gramere. Her şey sade ve anlaşılır bir dille anlatılmış. Emeğinize sağlık"</p>
+                <div class="text-[11px] text-slate-500 font-semibold">— D*** M***</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- KAPANIŞ: SATIN AL (en altta, tek ve güçlü CTA) -->
+    <div class="glass-card-ruby rounded-2xl p-6 text-center">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-card border border-brand-gold/30 text-brand-cream text-[11px] font-bold tracking-wide mb-4">
+            <i class="fa-solid fa-download text-brand-gold text-[10px]"></i>
+            DİJİTAL ÜRÜN · ANINDA TESLİMAT
+        </div>
+        <a href="https://www.shopier.com/32333525?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacgF2ZBonq7sIMYNEIEDBmlxBDLlcKwcdABPCLGLze5xGP6juP4qxIejxiqdg_aem_vcFw1y-IILdTuVGSGhLbfg&utm_id=97760_v0_s00_e0_tv3&ext=1" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 w-full bg-brand-gold hover:bg-brand-gold/90 text-brand-dark font-bold text-sm px-6 py-4 rounded-xl transition-all shadow-glow-gold mb-3">
+            <i class="fa-solid fa-cart-shopping text-xs"></i> Şimdi Satın Al
+        </a>
+
+        <a href="mailto:ispanyolcaonlineplus@gmail.com?subject=İspanyolca%20Online%20Lego%20%2B%20V2.0%20Satın%20Almak%20İstiyorum" class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-brand-gold transition-colors">
+            <i class="fa-solid fa-envelope text-[10px]"></i> Sorularınız için bizimle iletişime geçin
+        </a>
+    </div>
+
+    <footer class="mt-10 text-center text-slate-500 text-xs">
+        <p>© 2026 İspanyolca Online. Tüm hakları saklıdır.</p>
+    </footer>
+
+</main>
+
+<script>
+    function toggleSeviye(btn, panelId) {
+        const panel = document.getElementById(panelId);
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        panel.classList.toggle('hidden');
+    }
+</script>
+
+</body>
+</html>
